@@ -2,8 +2,15 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App Component', () => {
+  test('should Render', () => {
+    const renderResult = render(<App />);
+    expect(renderResult).toBeTruthy();
+  });
+
+  test('should have cheeky remark', () => {
+    const { getByText } = render(<App />);
+    const cheekyRemark = getByText(/All this from a container/i);
+    expect(cheekyRemark).toBeInTheDocument();
+  });
 });
