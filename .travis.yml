@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true ajduet/client npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-west-1'
+  app: 'react-docker-client'
+  env: 'ReactDockerClient-env'
+  bucket_name: 'elasticbeanstalk-us-west-1-367484709954'
+  bucket_path: 'react-docker-client'
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  on:
+    branch: master
